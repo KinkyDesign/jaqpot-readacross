@@ -1,0 +1,6 @@
+flask
+numpy
+scipy
+sklearn
+matplotlib
+pylint

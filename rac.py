@@ -14,7 +14,7 @@ from sklearn import linear_model
 from numpy  import array, shape, where, in1d
 import ast
 import threading
-import Queue
+import queue
 import time
 import random
 from random import randrange
@@ -23,7 +23,8 @@ from sklearn import cross_validation
 from sklearn import metrics
 from sklearn.naive_bayes import GaussianNB, MultinomialNB, BernoulliNB
 from sklearn.metrics import confusion_matrix
-import cStringIO
+from io import StringIO
+# import cStringIO
 from numpy import random
 import scipy
 from scipy.stats import chisquare
@@ -32,7 +33,7 @@ import operator
 import matplotlib
 import io
 from io import BytesIO
-#matplotlib.use('Agg')
+matplotlib.use('TkAgg')
 import matplotlib.pyplot
 import matplotlib.pyplot as plt
 from operator import itemgetter
@@ -74,7 +75,7 @@ def getJsonTrainRA (jsonInput):
         variables.remove(predictionFeature)
 
     except(ValueError, KeyError, TypeError):
-        print "Error: Please check JSON syntax... \n"
+        print("Error: Please check JSON syntax... \n")
 
     return variables, datapoints, predictionFeature, target_variable_values, parameters, substances ## new 21/06/16
 
@@ -108,7 +109,7 @@ def getJsonTestRA (jsonInput):
                     datapoints[i].append(dataEntry[i]["values"].get(j)) ## FOR INTERNAL USAGE ONLY hack # new 21/06/16
 
     except(ValueError, KeyError, TypeError):
-        print "Error: Please check JSON syntax... \n"
+        print("Error: Please check JSON syntax... \n")
 
     return variables, datapoints, predictionFeature, rawModel, readAcrossURIs, predictedFeatures # new 21/06/16
 
